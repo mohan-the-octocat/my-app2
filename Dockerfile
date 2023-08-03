@@ -9,5 +9,3 @@ RUN apt-get install -y openjdk-11-jdk
 RUN apt-get install -y maven
 RUN apt-get install -y git
 ENV CLASSPATH /usr/share/maven/ref/repository/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar
-RUN git clone
-
