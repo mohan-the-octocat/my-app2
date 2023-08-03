@@ -1,0 +1,30 @@
+errorCodeConfig:
+  serviceDefaultError:
+    MP: EXT_SUPPLIER_UNMAPPED_ERROR
+    COMMON: INT_ADAPTER_EXCEPTION
+    CMS: CMS_NO_CMS_DETAIL_FOUND
+
+  s3Config:
+    accessKey: AKIAXUNKQWSFNRUI4SXQ
+    secretKey: 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
+    bucketName: flt-test
+
+estreams:
+  aerospike-config:
+    host: "m_flght_aerospk-mfare_1.mmm.mm, m_flt_aspk-mfare_2.mmm.mm"
+    port: "3000, 3000"
+    respbin: "response"
+    namespace: "ns_256"
+    set: "tpData"
+    compressData: true
+    ttl: 60
+    
+  kafka-config:
+    bootstrapServers: "kafka-flt-bkng.mmm.mm:9092"
+    groupId: "group1"
+    topicName: "tp-search"
+  
+  s3-config:
+    accessKey: "AKIAIL7SD3B5WLCXUPCA"
+    secretKey: "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"
+    path: "flt-dev-test/push-data/tp/error"
