@@ -1,0 +1,6 @@
+# ignore all java class files
+*.class
+
+# ignore files under the maven target directory
+target/
+target/*

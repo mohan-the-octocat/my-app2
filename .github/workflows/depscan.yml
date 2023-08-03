@@ -1,0 +1,37 @@
+# GitHub action to scan dependencies for vulnerabilities
+# name: Dependency Scan
+# runs on ubuntu-latest
+
+# Performs the following steps
+# 1. Checkout the source code
+# 2. Run the maven build command for Java project 
+# 3. Run the maven dependency plugin to generate the dependency tree
+
+# 4. Run the dependency check plugin to generate the report
+# 5. Upload the report to the GitHub code scanning alerts
+
+name: Dependency Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+    buildAndUpload:
+        name: Maven Build and Upload
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout the source code
+          uses: actions/checkout@v2
+        - name: Run the maven build command for Java project
+          run: mvn clean install
+        - name: Run the maven dependency plugin to generate the dependency tree
+          run: mvn dependency:tree
+        - name: Run the dependency check plugin to generate the report
+          run: mvn org.owasp:dependency-check-maven:check
+        - name: Upload the report to the GitHub code scanning alerts
+          uses: github/codeql-action/upload-sarif@v1
+          with:
+            sarif_file: target/dependency-check-report.sarif
