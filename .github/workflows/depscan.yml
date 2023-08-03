@@ -31,7 +31,10 @@ jobs:
           run: mvn dependency:tree
         - name: Run the dependency check plugin to generate the report
           run: mvn org.owasp:dependency-check-maven:check
-        - name: Upload the report to the GitHub code scanning alerts
-          uses: github/codeql-action/upload-sarif@v1
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v2.1.1
           with:
-            sarif_file: target/dependency-check-report.sarif
+            name: dependency-check-report
+            path: /home/runner/work/my-app2/my-app2/target/dependency-check-report.html
+        
+       
