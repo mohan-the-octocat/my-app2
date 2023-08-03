@@ -18,6 +18,9 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions: 
+    contents: write
+
 jobs:
     buildAndUpload:
         name: Maven Build and Upload
